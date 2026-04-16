@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: assettrack
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: http://192.168.3.225/aether-k8s-manifests.git
+    targetRevision: HEAD
+    path: .
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: assettrack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
