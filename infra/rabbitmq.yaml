@@ -13,6 +13,8 @@ spec:
       labels:
         app: rabbitmq
     spec:
+      imagePullSecrets:
+      - name: harbor-secret
       containers:
       - name: rabbitmq
         image: 192.168.3.236/library/rabbitmq:3-management
@@ -29,5 +31,9 @@ spec:
   selector:
     app: rabbitmq
   ports:
-  - port: 5672
-  - port: 15672
+  - name: amqp
+    port: 5672
+    targetPort: 5672
+  - name: management
+    port: 15672
+    targetPort: 15672
