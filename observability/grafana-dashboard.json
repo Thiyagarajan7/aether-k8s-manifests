@@ -1,0 +1,14 @@
+{
+  "title": "AssetTrack Dashboard",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "API Requests",
+      "targets": [
+        {
+          "expr": "requests_total"
+        }
+      ]
+    }
+  ]
+}
