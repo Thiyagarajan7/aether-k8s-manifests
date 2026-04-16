@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: processor
+  namespace: assettrack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: processor
+  template:
+    metadata:
+      labels:
+        app: processor
+    spec:
+      containers:
+      - name: processor
+        image: 192.168.3.236/assettrack/processor:v1
+        env:
+        - name: RABBITMQ_HOST
+          value: rabbitmq
