@@ -1,0 +1,6 @@
+groups:
+- name: assettrack-alerts
+  rules:
+  - alert: HighErrorLogs
+    expr: rate({app="api"} |= "ERROR" [1m]) > 1
+    for: 1m
